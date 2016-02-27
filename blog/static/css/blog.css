@@ -5,6 +5,15 @@ body {
 
 h1, h2, h3, h4 {
   font-family: 'Roboto Slab', serif;
+  margin-bottom: 3.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 h1 a {
@@ -31,4 +40,14 @@ p {
 .mdl-layout-title {
   font-family: 'Roboto Slab', serif;
   font-weight: bold;
+}
+
+.publish-date {
+  color: #cacaca;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.post {
+  margin-bottom: 10%;
 }
