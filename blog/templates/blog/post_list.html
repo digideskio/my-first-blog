@@ -1,63 +1,11 @@
-{% load staticfiles %}
+{% extends 'blog/base.html' %}
 
-<html>
-
-  <head>
-    <title>An unusual journey</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  </head>
-
-  <body>
-
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">An unusual journey</span>
-          <!-- Add spacer, to align navigation to the right -->
-          <div class="mdl-layout-spacer"></div>
-          <!-- Navigation. We hide it in small screens. -->
-          <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-          </nav>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
-        <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-        </nav>
-      </div>
-
-      <main class="mdl-layout__content">
-
-        <div class="mdl-grid page-content">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></div>
-          <div class="mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
-            {% for post in posts %}
-              <div class="post">
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p class="publish-date">{{ post.published_date }}</p>
-                <p>{{ post.text|linebreaks }}</p>
-              </div>
-            {% endfor %}
-          </div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--0-col-tablet"></div>
-        </div>
-      </main>
-
-      </div>
-  </body>
-
-</html>
+{% block content %}
+  {% for post in posts %}
+    <div class="post">
+      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+      <p class="publish-date">{{ post.published_date }}</p>
+      <p>{{ post.text|linebreaks }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
