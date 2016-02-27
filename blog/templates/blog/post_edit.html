@@ -1,9 +1,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+  <h1>New post</h1>
+
+  <form method="POST" class="post-form">{% csrf_token %}
+    <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <!--{{ form.as_p }}-->
+      <input class="mdl-textfield__input" type="text" id="id_title" name="title">
+      <label class="mdl-textfield__label" for="id_title">Title</label>
+    </div>
+    <div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield">
+      <textarea class="mdl-textfield__input" type="text" rows= "10" id="id_text" name="text" ></textarea>
+      <label class="mdl-textfield__label" for="id_text">Write something...</label>
+    </div>
+    <button type="submit" class="save btn btn-default mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Save</button>
+
+  </form>
+
 {% endblock %}
